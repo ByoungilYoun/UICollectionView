@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     collectionView.backgroundColor = .white
     collectionView.dataSource = self
     collectionView.delegate = self
+    collectionView.dragDelegate = self
+    collectionView.dragInteractionEnabled = true
     collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     collectionView.contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     view.addSubview(collectionView)
@@ -50,6 +52,18 @@ extension ViewController : UICollectionViewDataSource {
     cellImage.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -4).isActive = true
     cellImage.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -4).isActive = true
     return cell
+  }
+}
+
+  //MARK: - UICollectionViewDragDelegate
+extension ViewController : UICollectionViewDragDelegate {
+  func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+    let item = self.items[indexPath.row]
+    let itemProvider = NSItemProvider(object: item as NSString)
+    let dragItem = UIDragItem(itemProvider: itemProvider)
+    dragItem.localObject = item
+    
+    return [dragItem]
   }
 }
 
