@@ -9,6 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+  //MARK: - Properties
+  fileprivate var items : [String] = ["1", "2", "3"]
+  
   //MARK: - Lifeycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -21,6 +24,7 @@ class ViewController: UIViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+    collectionView.contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     view.addSubview(collectionView)
     
   }
@@ -34,7 +38,17 @@ extension ViewController : UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-    cell.backgroundColor = .cyan
+    cell.backgroundColor = .white
+    let image = UIImage(named: self.items[indexPath.row])
+    let cellImage = UIImageView(image: image)
+    cell.contentView.addSubview(cellImage)
+    cellImage.contentMode = .scaleAspectFill
+    cell.contentView.clipsToBounds = true
+    cellImage.translatesAutoresizingMaskIntoConstraints = false
+    cellImage.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 4).isActive = true
+    cellImage.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 4).isActive = true
+    cellImage.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -4).isActive = true
+    cellImage.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -4).isActive = true
     return cell
   }
 }
@@ -42,7 +56,7 @@ extension ViewController : UICollectionViewDataSource {
   //MARK: - UICollectionViewDelegateFlowLayout
 extension ViewController : UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let square = collectionView.frame.width / 3
+    let square = (collectionView.frame.width - 8) / 3
     return CGSize(width: square, height: square)
   }
 }
