@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     collectionView.delegate = self
     collectionView.dragDelegate = self
     collectionView.dragInteractionEnabled = true
+    collectionView.dropDelegate = self
     collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     collectionView.contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     view.addSubview(collectionView)
@@ -64,6 +65,24 @@ extension ViewController : UICollectionViewDragDelegate {
     dragItem.localObject = item
     
     return [dragItem]
+  }
+}
+
+  //MARK: - UICollectionViewDropDelegate
+extension ViewController : UICollectionViewDropDelegate {
+  func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+      if collectionView.hasActiveDrag {
+        return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+      }
+      return UICollectionViewDropProposal(operation: .forbidden)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+    let destinationIndexPath = coordinator.destinationIndexPath
+    
+    if coordinator.proposal.operation == .move {
+      
+    }
   }
 }
 
