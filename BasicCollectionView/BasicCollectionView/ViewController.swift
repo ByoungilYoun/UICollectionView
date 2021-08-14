@@ -9,11 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+  //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .red
+    
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    collectionView.backgroundColor = .red
+    
+    view.addSubview(collectionView)
+    
+    collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+    collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+    collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+    collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
   }
-
-
 }
-
