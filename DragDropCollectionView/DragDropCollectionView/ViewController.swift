@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
 
   //MARK: - Properties
-  fileprivate var items : [String] = ["1", "2", "3"]
+  fileprivate var items : [String] = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
   
   //MARK: - Lifeycle
   override func viewDidLoad() {
@@ -31,12 +31,29 @@ class ViewController: UIViewController {
     view.addSubview(collectionView)
     
   }
+  
+  //MARK: - Functions
+  fileprivate func reorderItems(coordinator : UICollectionViewDropCoordinator, destinationIndexPath : IndexPath, collectionView : UICollectionView) {
+    if let item = coordinator.items.first,
+       let sourceIndexPath = item.sourceIndexPath {
+      
+      collectionView.performBatchUpdates({
+        // remove the item
+        self.items.remove(at: sourceIndexPath.item)
+        // inset the item
+        self.items.insert(item.dragItem.localObject as! String, at: destinationIndexPath.item)
+        collectionView.deleteItems(at: [sourceIndexPath])
+        collectionView.insertItems(at: [destinationIndexPath])
+      }, completion: nil)
+      coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
+    }
+  }
 }
 
   //MARK: - UICollectionViewDataSource
 extension ViewController : UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 3
+    return 9
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,8 +97,10 @@ extension ViewController : UICollectionViewDropDelegate {
   func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
     let destinationIndexPath = coordinator.destinationIndexPath
     
+    guard let indexPath = destinationIndexPath else {return}
+    
     if coordinator.proposal.operation == .move {
-      
+      self.reorderItems(coordinator: coordinator, destinationIndexPath: indexPath, collectionView: collectionView)
     }
   }
 }
