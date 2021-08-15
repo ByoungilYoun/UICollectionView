@@ -53,7 +53,7 @@ class ViewController: UIViewController {
   //MARK: - UICollectionViewDataSource
 extension ViewController : UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 9
+    return items.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -95,12 +95,18 @@ extension ViewController : UICollectionViewDropDelegate {
   }
   
   func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-    let destinationIndexPath = coordinator.destinationIndexPath
+    var destinationIndexPath : IndexPath
     
-    guard let indexPath = destinationIndexPath else {return}
+    if let indexPath = coordinator.destinationIndexPath {
+      destinationIndexPath = indexPath
+    } else {
+//      let section = collectionView.numberOfSections - 1
+      let row = collectionView.numberOfItems(inSection: 0)
+      destinationIndexPath = IndexPath(item: row - 1, section: 0)
+    }
     
     if coordinator.proposal.operation == .move {
-      self.reorderItems(coordinator: coordinator, destinationIndexPath: indexPath, collectionView: collectionView)
+      self.reorderItems(coordinator: coordinator, destinationIndexPath: destinationIndexPath, collectionView: collectionView)
     }
   }
 }
