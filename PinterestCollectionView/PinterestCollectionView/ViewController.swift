@@ -28,12 +28,20 @@ class PinterestLayout : UICollectionViewFlowLayout {
   override func prepare() {
     guard let collection = collectionView else {return}
     let columnWidth = contentWidth / CGFloat(numberOfColumns)
-    print(columnWidth)
+    
+    let xOffset : CGFloat = columnWidth
+    let yOffset : CGFloat = 100
+    let photoHeight : CGFloat = 400 // we will get this value later from out view controller
+    let indexPathOne = IndexPath(item: 0, section: 0)
+    let frameOne = CGRect(x: xOffset, y: yOffset, width: columnWidth, height: photoHeight)
+    let cvAttributesOne = UICollectionViewLayoutAttributes(forCellWith: indexPathOne)
+    cvAttributesOne.frame = frameOne
+    self.cache.append(cvAttributesOne)
   }
   
   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
     var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
-    return visibleLayoutAttributes
+    return cache
   }
 }
 
