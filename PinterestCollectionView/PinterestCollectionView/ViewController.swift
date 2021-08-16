@@ -35,20 +35,25 @@ class PinterestLayout : UICollectionViewFlowLayout {
     guard let collection = collectionView else {return}
     let columnWidth = contentWidth / CGFloat(numberOfColumns)
     
-    let xOffset : [CGFloat] = [0,columnWidth]
-    let yOffset : CGFloat = 100
+    var xOffset = [CGFloat]()
+    var yOffset = [CGFloat](repeating : 0, count : numberOfColumns)
    
+    for column in 0 ..< numberOfColumns {
+      xOffset.append(CGFloat(column) * columnWidth)
+    }
+    
     var columnToPlacePhoto = 0
     
     for item in 0 ..< collection.numberOfItems(inSection: 0) {
       let indexPath = IndexPath(item: item, section: 0)
       let photoHeight : CGFloat = delegate?.collectionView(collection, numberOfColumns: numberOfColumns, heightForPhotoAtIndexPath: indexPath) ?? 200
-      let frame = CGRect(x: xOffset[columnToPlacePhoto], y: yOffset, width: columnWidth, height: photoHeight)
+      let frame = CGRect(x: xOffset[columnToPlacePhoto], y: yOffset[columnToPlacePhoto], width: columnWidth, height: photoHeight)
       let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
       attributes.frame = frame
       self.cache.append(attributes)
       
-      columnToPlacePhoto = 1
+      yOffset[columnToPlacePhoto] = yOffset[columnToPlacePhoto] + photoHeight
+      columnToPlacePhoto = columnToPlacePhoto < (numberOfColumns - 1) ? (columnToPlacePhoto + 1) : 0
     }
   }
   
@@ -64,7 +69,10 @@ class ViewController: UIViewController {
   fileprivate var images : [String] = [
     "1",
     "2",
-    "3"
+    "3",
+    "4",
+    "5",
+    "2"
   ]
   
   //MARK: - Lifecycle
