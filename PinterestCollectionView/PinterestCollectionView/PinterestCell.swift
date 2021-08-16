@@ -24,18 +24,31 @@ class PinterestCell : UICollectionViewCell {
     return imageView
   }()
   
+  fileprivate lazy var verticalStackView : UIStackView = {
+    let stack = UIStackView(arrangedSubviews: [imageView, horizontalStackView])
+    stack.axis = .vertical
+    return stack
+  }()
+  
+  fileprivate let horizontalStackView : UIStackView = {
+    let stack = UIStackView()
+    stack.axis = .horizontal
+    return stack
+  }()
+  
   //MARK: - init
   override init(frame: CGRect) {
     super.init(frame: frame)
     contentView.layer.cornerRadius = 12
     contentView.clipsToBounds = true
-    contentView.addSubview(imageView)
-    imageView.frame = contentView.frame
+    contentView.addSubview(verticalStackView)
+    verticalStackView.frame = contentView.frame
+    
   }
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 4, bottom: 10, right: 4))
+    contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 6, left: 4, bottom: 6, right: 4))
   }
   
   required init?(coder: NSCoder) {
