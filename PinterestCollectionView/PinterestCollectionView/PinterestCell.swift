@@ -20,7 +20,9 @@ class PinterestCell : UICollectionViewCell {
   
   fileprivate let imageView : UIImageView = {
     let imageView = UIImageView()
-    imageView.contentMode = .scaleAspectFit
+    imageView.contentMode = .scaleAspectFill
+    imageView.layer.cornerRadius = 12
+    imageView.clipsToBounds = true
     return imageView
   }()
   
@@ -30,8 +32,16 @@ class PinterestCell : UICollectionViewCell {
     return stack
   }()
   
-  fileprivate let horizontalStackView : UIStackView = {
-    let stack = UIStackView()
+  fileprivate let label : UILabel = {
+    let label = UILabel()
+    label.text = "Jimmy Youn Practice"
+    label.textColor = .black
+    label.font = UIFont.systemFont(ofSize: 10, weight: .bold)
+    return label
+  }()
+  
+  fileprivate lazy var horizontalStackView : UIStackView = {
+    let stack = UIStackView(arrangedSubviews: [label])
     stack.axis = .horizontal
     return stack
   }()
@@ -39,11 +49,14 @@ class PinterestCell : UICollectionViewCell {
   //MARK: - init
   override init(frame: CGRect) {
     super.init(frame: frame)
-    contentView.layer.cornerRadius = 12
-    contentView.clipsToBounds = true
     contentView.addSubview(verticalStackView)
-    verticalStackView.frame = contentView.frame
+    verticalStackView.snp.makeConstraints {
+      $0.top.leading.trailing.bottom.equalToSuperview()
+    }
     
+    horizontalStackView.snp.makeConstraints {
+      $0.height.equalTo(25)
+    }
   }
   
   override func layoutSubviews() {
@@ -54,6 +67,4 @@ class PinterestCell : UICollectionViewCell {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  //MARK: - Functions
 }
