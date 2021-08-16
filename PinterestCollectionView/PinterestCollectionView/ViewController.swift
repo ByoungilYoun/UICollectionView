@@ -12,20 +12,26 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let collection = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+    let layout = UICollectionViewFlowLayout()
+    layout.minimumInteritemSpacing = 0
+    layout.minimumLineSpacing = 0
+    let collection = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
     collection.backgroundColor = .white
     view.addSubview(collection)
     
     collection.delegate = self
     collection.dataSource = self
     collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+    collection.contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
   }
 }
 
   //MARK: - UICollectionViewDelegateFlowLayout
 extension ViewController : UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: collectionView.frame.width / 2, height: 400)
+    let cvWidth = collectionView.frame.width - 8
+    let columnWith = cvWidth / 2
+    return CGSize(width: columnWith, height: 400)
   }
 }
 
