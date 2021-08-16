@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol PinterestDelegate : AnyObject {
+  func collectionView(_ collectionView : UICollectionView, numberOfColumns : Int, heightForPhotoAtIndexPath indexPath : IndexPath) -> CGFloat
+}
+
 class PinterestLayout : UICollectionViewFlowLayout {
+  
+  weak var delegate : PinterestDelegate?
   
   var cache = [UICollectionViewLayoutAttributes]()
   
@@ -31,16 +37,16 @@ class PinterestLayout : UICollectionViewFlowLayout {
     
     let xOffset : [CGFloat] = [0,columnWidth]
     let yOffset : CGFloat = 100
-    let photoHeight : CGFloat = 400 // we will get this value later from out view controller
    
     var columnToPlacePhoto = 0
     
     for item in 0 ..< collection.numberOfItems(inSection: 0) {
-      let indexPathOne = IndexPath(item: item, section: 0)
-      let frameOne = CGRect(x: xOffset[columnToPlacePhoto], y: yOffset, width: columnWidth, height: photoHeight)
-      let cvAttributesOne = UICollectionViewLayoutAttributes(forCellWith: indexPathOne)
-      cvAttributesOne.frame = frameOne
-      self.cache.append(cvAttributesOne)
+      let indexPath = IndexPath(item: item, section: 0)
+      let photoHeight : CGFloat = delegate?.collectionView(collection, numberOfColumns: numberOfColumns, heightForPhotoAtIndexPath: indexPath) ?? 200
+      let frame = CGRect(x: xOffset[columnToPlacePhoto], y: yOffset, width: columnWidth, height: photoHeight)
+      let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+      attributes.frame = frame
+      self.cache.append(attributes)
       
       columnToPlacePhoto = 1
     }
@@ -72,7 +78,10 @@ class ViewController: UIViewController {
     collection.backgroundColor = .white
     view.addSubview(collection)
     
-    collection.delegate = self
+    if let layout = collection.collectionViewLayout as? PinterestLayout {
+      layout.delegate = self
+    }
+    
     collection.dataSource = self
     collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     collection.contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
@@ -80,13 +89,13 @@ class ViewController: UIViewController {
 }
 
   //MARK: - UICollectionViewDelegateFlowLayout
-extension ViewController : UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let cvWidth = collectionView.frame.width - 8
-    let columnWith = cvWidth / 2
-    return CGSize(width: columnWith, height: 400)
-  }
-}
+//extension ViewController : UICollectionViewDelegateFlowLayout {
+//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//    let cvWidth = collectionView.frame.width - 8
+//    let columnWith = cvWidth / 2
+//    return CGSize(width: columnWith, height: 400)
+//  }
+//}
 
   //MARK: - UICollectionViewDataSource
 extension ViewController : UICollectionViewDataSource {
@@ -104,5 +113,12 @@ extension ViewController : UICollectionViewDataSource {
     cell.contentView.clipsToBounds = true
     cell.contentView.addSubview(imageView)
     return cell
+  }
+}
+
+  //MARK: - PinterestDelegate
+extension ViewController : PinterestDelegate {
+  func collectionView(_ collectionView: UICollectionView, numberOfColumns: Int, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
+    return 200
   }
 }
