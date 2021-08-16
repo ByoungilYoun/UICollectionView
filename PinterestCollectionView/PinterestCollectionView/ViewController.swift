@@ -29,18 +29,25 @@ class PinterestLayout : UICollectionViewFlowLayout {
     guard let collection = collectionView else {return}
     let columnWidth = contentWidth / CGFloat(numberOfColumns)
     
-    let xOffset : CGFloat = columnWidth
+    let xOffset : [CGFloat] = [0,columnWidth]
     let yOffset : CGFloat = 100
     let photoHeight : CGFloat = 400 // we will get this value later from out view controller
-    let indexPathOne = IndexPath(item: 0, section: 0)
-    let frameOne = CGRect(x: xOffset, y: yOffset, width: columnWidth, height: photoHeight)
-    let cvAttributesOne = UICollectionViewLayoutAttributes(forCellWith: indexPathOne)
-    cvAttributesOne.frame = frameOne
-    self.cache.append(cvAttributesOne)
+   
+    var columnToPlacePhoto = 0
+    
+    for item in 0 ..< collection.numberOfItems(inSection: 0) {
+      let indexPathOne = IndexPath(item: item, section: 0)
+      let frameOne = CGRect(x: xOffset[columnToPlacePhoto], y: yOffset, width: columnWidth, height: photoHeight)
+      let cvAttributesOne = UICollectionViewLayoutAttributes(forCellWith: indexPathOne)
+      cvAttributesOne.frame = frameOne
+      self.cache.append(cvAttributesOne)
+      
+      columnToPlacePhoto = 1
+    }
   }
   
   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-    var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
+//    var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
     return cache
   }
 }
