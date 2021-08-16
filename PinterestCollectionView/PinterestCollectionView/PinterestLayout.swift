@@ -54,6 +54,7 @@ class PinterestLayout : UICollectionViewFlowLayout {
       
       yOffset[columnToPlacePhoto] = yOffset[columnToPlacePhoto] + photoHeight
       columnToPlacePhoto = columnToPlacePhoto < (numberOfColumns - 1) ? (columnToPlacePhoto + 1) : 0
+      contentHeight = yOffset[columnToPlacePhoto]
     }
   }
   

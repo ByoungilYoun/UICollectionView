@@ -40,8 +40,16 @@ class PinterestCell : UICollectionViewCell {
     return label
   }()
   
+  fileprivate let myButton : UIButton = {
+    let button = UIButton()
+    button.setImage(UIImage(systemName: "heart"), for: .normal)
+    button.imageView?.contentMode = .scaleAspectFit
+    button.tintColor = .black
+    return button
+  }()
+  
   fileprivate lazy var horizontalStackView : UIStackView = {
-    let stack = UIStackView(arrangedSubviews: [label])
+    let stack = UIStackView(arrangedSubviews: [label, myButton])
     stack.axis = .horizontal
     return stack
   }()
@@ -56,6 +64,10 @@ class PinterestCell : UICollectionViewCell {
     
     horizontalStackView.snp.makeConstraints {
       $0.height.equalTo(25)
+    }
+    
+    myButton.snp.makeConstraints {
+      $0.width.equalTo(24)
     }
   }
   
