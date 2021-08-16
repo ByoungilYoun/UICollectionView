@@ -9,36 +9,30 @@ import UIKit
 
 class PinterestLayout : UICollectionViewFlowLayout {
   
-  override init() {
-    super.init()
-      self.minimumInteritemSpacing = 0
-      self.minimumLineSpacing = 0
+  var cache = [UICollectionViewLayoutAttributes]()
+  
+  fileprivate let numberOfColumns = 2
+  
+  fileprivate var contentHeight : CGFloat = 0
+  
+  fileprivate var contentWidth : CGFloat {
+    guard let collectionView = collectionView else {return 0.0}
+    let insets = collectionView.contentInset
+    return collectionView.bounds.width - (insets.left + insets.right)
   }
   
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+  override var collectionViewContentSize: CGSize {
+    return CGSize(width: contentWidth, height: contentHeight)
+  }
+  
+  override func prepare() {
+    guard let collection = collectionView else {return}
+    let columnWidth = contentWidth / CGFloat(numberOfColumns)
+    print(columnWidth)
   }
   
   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
     var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
-    let width = UIScreen.main.bounds.width / 2
-    let rectOne = CGRect(x: 0, y: 0, width: width, height: 300)
-    let indexPath = IndexPath(item: 0, section: 0)
-    let attributesOne = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-    attributesOne.frame = rectOne
-    visibleLayoutAttributes.append(attributesOne)
-    
-    let rectOne1 = CGRect(x: width, y: 150, width: width, height: 300)
-    let indexPath1 = IndexPath(item: 1, section: 0)
-    let attributesOne1 = UICollectionViewLayoutAttributes(forCellWith: indexPath1)
-    attributesOne1.frame = rectOne1
-    visibleLayoutAttributes.append(attributesOne1)
-    
-    let rectOne2 = CGRect(x: 0, y: 300, width: width, height: 150)
-    let indexPath2 = IndexPath(item: 2, section: 0)
-    let attributesOne2 = UICollectionViewLayoutAttributes(forCellWith: indexPath2)
-    attributesOne2.frame = rectOne2
-    visibleLayoutAttributes.append(attributesOne2)
     return visibleLayoutAttributes
   }
 }
@@ -57,7 +51,8 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     
     let layout = PinterestLayout()
-
+    layout.minimumInteritemSpacing = 0
+    layout.minimumLineSpacing = 0
     let collection = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
     collection.backgroundColor = .white
     view.addSubview(collection)
