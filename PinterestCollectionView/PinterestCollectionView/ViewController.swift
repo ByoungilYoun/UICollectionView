@@ -119,6 +119,11 @@ extension ViewController : UICollectionViewDataSource {
   //MARK: - PinterestDelegate
 extension ViewController : PinterestDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfColumns: Int, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-    return 200
+    let image = UIImage(named: self.images[indexPath.item])!
+    let imageHeight = image.size.height
+    let imageWidth = image.size.width
+    let columnRatio : CGFloat = 1 / CGFloat(numberOfColumns)
+    let imageSizeRatio = (collectionView.frame.width * columnRatio) / imageWidth
+    return imageHeight * imageSizeRatio
   }
 }
