@@ -41,8 +41,8 @@ class DynamicHeightUICollectionViewCell : UICollectionViewCell {
     let view = UIImageView()
     view.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      view.widthAnchor.constraint(equalToConstant: 200.0),
-      view.heightAnchor.constraint(equalToConstant: 200.0)
+      view.widthAnchor.constraint(equalToConstant: 150.0),
+      view.heightAnchor.constraint(equalToConstant: 150.0)
     ])
     return view
   }()
@@ -50,7 +50,8 @@ class DynamicHeightUICollectionViewCell : UICollectionViewCell {
   private lazy var containerView : UIStackView = {
     let view = UIStackView(arrangedSubviews: [titleLabel, imageView, messageLabel])
     view.backgroundColor = UIColor.green
-    view.layer.cornerRadius = 24.0
+    view.layer.cornerRadius = 12.0
+    view.spacing = 12.0
     view.axis = .vertical
     view.translatesAutoresizingMaskIntoConstraints = false
     return view

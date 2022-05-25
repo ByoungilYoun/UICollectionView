@@ -14,6 +14,7 @@
 		0F1AA59C283BF7250001A3DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F1AA59A283BF7250001A3DF /* LaunchScreen.storyboard */; };
 		0F27435F283E738A00E857B0 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F27435E283E738A00E857B0 /* ViewModel.swift */; };
 		0F274363283E774200E857B0 /* DynamicHeightUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F274362283E774100E857B0 /* DynamicHeightUICollectionViewCell.swift */; };
+		0F274367283EA24D00E857B0 /* DynamicCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F274366283EA24D00E857B0 /* DynamicCardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0F1AA59D283BF7250001A3DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F27435E283E738A00E857B0 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		0F274362283E774100E857B0 /* DynamicHeightUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightUICollectionViewCell.swift; sourceTree = "<group>"; };
+		0F274366283EA24D00E857B0 /* DynamicCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				0F1AA58F283BF7240001A3DF /* AppDelegate.swift */,
 				0F1AA591283BF7240001A3DF /* SceneDelegate.swift */,
 				0F27435E283E738A00E857B0 /* ViewModel.swift */,
+				0F274366283EA24D00E857B0 /* DynamicCardViewController.swift */,
 				0F274362283E774100E857B0 /* DynamicHeightUICollectionViewCell.swift */,
 				0F1AA595283BF7240001A3DF /* Main.storyboard */,
 				0F1AA598283BF7250001A3DF /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F274363283E774200E857B0 /* DynamicHeightUICollectionViewCell.swift in Sources */,
+				0F274367283EA24D00E857B0 /* DynamicCardViewController.swift in Sources */,
 				0F1AA590283BF7240001A3DF /* AppDelegate.swift in Sources */,
 				0F27435F283E738A00E857B0 /* ViewModel.swift in Sources */,
 				0F1AA592283BF7240001A3DF /* SceneDelegate.swift in Sources */,
