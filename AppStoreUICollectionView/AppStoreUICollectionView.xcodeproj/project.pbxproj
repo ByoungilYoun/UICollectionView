@@ -24,6 +24,7 @@
 		0F6D9D4C2842836200E45AC2 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D4B2842836200E45AC2 /* SelfConfiguringCell.swift */; };
 		0F6D9D4E2842839200E45AC2 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D4D2842839200E45AC2 /* FeaturedCell.swift */; };
 		0F6D9D5128429EE800E45AC2 /* MediumTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D5028429EE800E45AC2 /* MediumTableCell.swift */; };
+		0F6D9D532842A1D200E45AC2 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D522842A1D200E45AC2 /* SectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		0F6D9D4B2842836200E45AC2 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		0F6D9D4D2842839200E45AC2 /* FeaturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCell.swift; sourceTree = "<group>"; };
 		0F6D9D5028429EE800E45AC2 /* MediumTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumTableCell.swift; sourceTree = "<group>"; };
+		0F6D9D522842A1D200E45AC2 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				0F6D9D4D2842839200E45AC2 /* FeaturedCell.swift */,
 				0F6D9D5028429EE800E45AC2 /* MediumTableCell.swift */,
+				0F6D9D522842A1D200E45AC2 /* SectionHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				0F6D9D4228427E7400E45AC2 /* Section.swift in Sources */,
 				0F6D9D4A2842815400E45AC2 /* Bundle-Decodable.swift in Sources */,
 				0F6D9D4E2842839200E45AC2 /* FeaturedCell.swift in Sources */,
+				0F6D9D532842A1D200E45AC2 /* SectionHeader.swift in Sources */,
 				0F6D9D3A28425E3900E45AC2 /* GamesViewController.swift in Sources */,
 				0F6D9D5128429EE800E45AC2 /* MediumTableCell.swift in Sources */,
 				0F6D9D2228425B7F00E45AC2 /* SceneDelegate.swift in Sources */,
