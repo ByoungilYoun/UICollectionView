@@ -19,6 +19,7 @@
 		0F6D9D3C28425ECE00E45AC2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D3B28425ECE00E45AC2 /* SearchViewController.swift */; };
 		0F6D9D4228427E7400E45AC2 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D4128427E7400E45AC2 /* Section.swift */; };
 		0F6D9D4428427E9700E45AC2 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D4328427E9700E45AC2 /* App.swift */; };
+		0F6D9D4828427F8000E45AC2 /* appstore.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F6D9D4728427F8000E45AC2 /* appstore.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		0F6D9D3B28425ECE00E45AC2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0F6D9D4128427E7400E45AC2 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		0F6D9D4328427E9700E45AC2 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		0F6D9D4728427F8000E45AC2 /* appstore.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = appstore.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				0F6D9D1F28425B7F00E45AC2 /* AppDelegate.swift */,
 				0F6D9D2128425B7F00E45AC2 /* SceneDelegate.swift */,
+				0F6D9D4728427F8000E45AC2 /* appstore.json */,
 				0F6D9D4028427E6D00E45AC2 /* Model */,
 				0F6D9D3D28425EF000E45AC2 /* Controller */,
 				0F6D9D2828425B8100E45AC2 /* Assets.xcassets */,
@@ -162,6 +165,7 @@
 				0F6D9D2C28425B8100E45AC2 /* LaunchScreen.storyboard in Resources */,
 				0F6D9D2928425B8100E45AC2 /* Assets.xcassets in Resources */,
 				0F6D9D2728425B7F00E45AC2 /* Main.storyboard in Resources */,
+				0F6D9D4828427F8000E45AC2 /* appstore.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
