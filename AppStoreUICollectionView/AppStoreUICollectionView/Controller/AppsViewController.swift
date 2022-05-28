@@ -26,12 +26,12 @@ class AppsViewController : UIViewController {
   //MARK: - Functions
   private func setNavi() {
     self.title = "Apps"
-    self.navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.black]
+    self.navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.label]
     self.navigationController?.navigationBar.prefersLargeTitles = true
   }
   
   private func configureCollectionView() {
-    collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+    collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
     collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     collectionView.backgroundColor = .systemBackground
     view.addSubview(collectionView)
@@ -70,4 +70,36 @@ class AppsViewController : UIViewController {
     
     dataSource?.apply(snapshot)
   }
+  
+  func createCompositionalLayout() -> UICollectionViewLayout {
+    let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+      let section = self.sections[sectionIndex]
+      
+      switch section.type {
+      default :
+        return self.createFeaturedSection(using: section)
+      }
+    }
+    
+    let config = UICollectionViewCompositionalLayoutConfiguration()
+    config.interSectionSpacing = 20
+    layout.configuration = config
+    return layout
+  }
+  
+  func createFeaturedSection(using section : Section) -> NSCollectionLayoutSection {
+    // size -> item -> group -> section
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+    let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+    layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+    
+    let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93), heightDimension: .estimated(350))
+    let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
+    
+    let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+    layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
+    return layoutSection
+  }
+  
+  
 }
