@@ -21,6 +21,8 @@
 		0F6D9D4428427E9700E45AC2 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D4328427E9700E45AC2 /* App.swift */; };
 		0F6D9D4828427F8000E45AC2 /* appstore.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F6D9D4728427F8000E45AC2 /* appstore.json */; };
 		0F6D9D4A2842815400E45AC2 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D492842815400E45AC2 /* Bundle-Decodable.swift */; };
+		0F6D9D4C2842836200E45AC2 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D4B2842836200E45AC2 /* SelfConfiguringCell.swift */; };
+		0F6D9D4E2842839200E45AC2 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D4D2842839200E45AC2 /* FeaturedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		0F6D9D4328427E9700E45AC2 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		0F6D9D4728427F8000E45AC2 /* appstore.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = appstore.json; sourceTree = "<group>"; };
 		0F6D9D492842815400E45AC2 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		0F6D9D4B2842836200E45AC2 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
+		0F6D9D4D2842839200E45AC2 /* FeaturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,10 +78,12 @@
 			children = (
 				0F6D9D1F28425B7F00E45AC2 /* AppDelegate.swift */,
 				0F6D9D2128425B7F00E45AC2 /* SceneDelegate.swift */,
+				0F6D9D4028427E6D00E45AC2 /* Model */,
+				0F6D9D4F2842857000E45AC2 /* View */,
+				0F6D9D3D28425EF000E45AC2 /* Controller */,
 				0F6D9D492842815400E45AC2 /* Bundle-Decodable.swift */,
 				0F6D9D4728427F8000E45AC2 /* appstore.json */,
-				0F6D9D4028427E6D00E45AC2 /* Model */,
-				0F6D9D3D28425EF000E45AC2 /* Controller */,
+				0F6D9D4B2842836200E45AC2 /* SelfConfiguringCell.swift */,
 				0F6D9D2828425B8100E45AC2 /* Assets.xcassets */,
 				0F6D9D2528425B7F00E45AC2 /* Main.storyboard */,
 				0F6D9D2A28425B8100E45AC2 /* LaunchScreen.storyboard */,
@@ -105,6 +111,14 @@
 				0F6D9D4328427E9700E45AC2 /* App.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0F6D9D4F2842857000E45AC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0F6D9D4D2842839200E45AC2 /* FeaturedCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,11 +196,13 @@
 				0F6D9D4428427E9700E45AC2 /* App.swift in Sources */,
 				0F6D9D3428425C7C00E45AC2 /* TabBarController.swift in Sources */,
 				0F6D9D3C28425ECE00E45AC2 /* SearchViewController.swift in Sources */,
+				0F6D9D4C2842836200E45AC2 /* SelfConfiguringCell.swift in Sources */,
 				0F6D9D2028425B7F00E45AC2 /* AppDelegate.swift in Sources */,
 				0F6D9D3628425D9B00E45AC2 /* AppsViewController.swift in Sources */,
 				0F6D9D3828425E1000E45AC2 /* ArcadeViewController.swift in Sources */,
 				0F6D9D4228427E7400E45AC2 /* Section.swift in Sources */,
 				0F6D9D4A2842815400E45AC2 /* Bundle-Decodable.swift in Sources */,
+				0F6D9D4E2842839200E45AC2 /* FeaturedCell.swift in Sources */,
 				0F6D9D3A28425E3900E45AC2 /* GamesViewController.swift in Sources */,
 				0F6D9D2228425B7F00E45AC2 /* SceneDelegate.swift in Sources */,
 			);
