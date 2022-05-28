@@ -25,6 +25,7 @@
 		0F6D9D4E2842839200E45AC2 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D4D2842839200E45AC2 /* FeaturedCell.swift */; };
 		0F6D9D5128429EE800E45AC2 /* MediumTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D5028429EE800E45AC2 /* MediumTableCell.swift */; };
 		0F6D9D532842A1D200E45AC2 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D522842A1D200E45AC2 /* SectionHeader.swift */; };
+		0F6D9D552842A50A00E45AC2 /* SmallTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D9D542842A50A00E45AC2 /* SmallTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		0F6D9D4D2842839200E45AC2 /* FeaturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCell.swift; sourceTree = "<group>"; };
 		0F6D9D5028429EE800E45AC2 /* MediumTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumTableCell.swift; sourceTree = "<group>"; };
 		0F6D9D522842A1D200E45AC2 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		0F6D9D542842A50A00E45AC2 /* SmallTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				0F6D9D4D2842839200E45AC2 /* FeaturedCell.swift */,
 				0F6D9D5028429EE800E45AC2 /* MediumTableCell.swift */,
 				0F6D9D522842A1D200E45AC2 /* SectionHeader.swift */,
+				0F6D9D542842A50A00E45AC2 /* SmallTableCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			files = (
 				0F6D9D4428427E9700E45AC2 /* App.swift in Sources */,
 				0F6D9D3428425C7C00E45AC2 /* TabBarController.swift in Sources */,
+				0F6D9D552842A50A00E45AC2 /* SmallTableCell.swift in Sources */,
 				0F6D9D3C28425ECE00E45AC2 /* SearchViewController.swift in Sources */,
 				0F6D9D4C2842836200E45AC2 /* SelfConfiguringCell.swift in Sources */,
 				0F6D9D2028425B7F00E45AC2 /* AppDelegate.swift in Sources */,
