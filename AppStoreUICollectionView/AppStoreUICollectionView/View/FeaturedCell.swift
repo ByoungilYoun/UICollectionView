@@ -11,7 +11,7 @@ import UIKit
 class FeaturedCell : UICollectionViewCell, SelfConfiguringCell {
   
   //MARK: - Properties
-  static let reuseIdnetifier: String = "FeaturedCell"
+  static let reuseIdentifier: String = "FeaturedCell"
   
   let tagline = UILabel()
   let name = UILabel()
